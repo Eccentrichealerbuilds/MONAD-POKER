@@ -1,0 +1,70 @@
+/* PLEASE NOTE: THESE TAILWIND IMPORTS SHOULD NEVER BE DELETED */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
+/* Custom styles for poker table */
+.poker-table {
+  background-color: #1b6b35;
+  border-radius: 50%;
+  border: 12px solid #5d4037;
+  height: 500px;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+/* Seat positions around the table */
+.player-seat {
+  position: absolute;
+  z-index: 10;
+}
+.seat-1 { bottom: 0; left: 25%; transform: translateX(-50%) translateY(50%); }
+.seat-2 { bottom: 0; right: 25%; transform: translateX(50%) translateY(50%); }
+.seat-3 { bottom: 25%; right: 0; transform: translateX(50%); }
+.seat-4 { top: 50%; right: 0; transform: translateX(50%) translateY(-50%); }
+.seat-5 { top: 25%; right: 0; transform: translateX(50%); }
+.seat-6 { top: 0; right: 25%; transform: translateX(50%) translateY(-50%); }
+.seat-7 { top: 0; left: 25%; transform: translateX(-50%) translateY(-50%); }
+.seat-8 { top: 25%; left: 0; transform: translateX(-50%); }
+.seat-9 { top: 50%; left: 0; transform: translateX(-50%) translateY(-50%); }
+.seat-10 { bottom: 25%; left: 0; transform: translateX(-50%); }
+/* Card styling */
+.card {
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Mobile-friendly viewport height utility for the lobby */
+.min-h-viewport {
+  /* Fallback first */
+  min-height: 100vh;
+  /* Small viewport height (accounts for dynamic toolbars) */
+  min-height: 100svh;
+  /* Large viewport height */
+  min-height: 100lvh;
+  /* Dynamic viewport height (preferred on modern browsers) */
+  min-height: 100dvh;
+}
+
+/* Animated floating cards for lobby background */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(var(--translate-y, -20px)) translateX(var(--translate-x, 20px)) rotate(var(--rotate, 10deg));
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+}
+
+.animate-float {
+  animation: float 9999s ease-in-out infinite;
+}

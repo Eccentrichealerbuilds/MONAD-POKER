@@ -1,0 +1,25 @@
+{
+  "name": "poker-shuffle-backend",
+  "version": "1.0.0",
+  "description": "Backend service that requests Pyth Entropy shuffles and returns packed decks to the frontend.",
+
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node --transpile-only server.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "viem": "^2.33.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.8.10",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.3"
+  }
+}

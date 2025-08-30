@@ -1,12 +1,7 @@
 import { Card, GameStage, GameState, HandEvaluation, Player, Rank, Suit, HandRank } from './types';
-/*
-  PokerEngine contains core game logic with NO UI/CLI dependencies.
-  It manages GameState and exposes methods for the React UI.
-  (Ported incrementally from the original CLI implementation.)
-*/
+
 export class PokerEngine {
   private gameState: GameState;
-  // ------------ Logging helper -------------
   private addLog(entry: string) {
     this.gameState.logs.push(entry);
   }
@@ -514,71 +509,7 @@ export class PokerEngine {
   private startNewHand() {
     this.startNewHandInternal();
   }
-/* DUPLICATE BLOCK REMOVED
-    const players = this.gameState.players;
-    const activeCount = players.filter(p => p.chips > 0 && p.isActive).length;
-    if (activeCount < 2) {
-      this.gameState.stage = GameStage.Showdown;
-      return;
-    }
-    // Helper to get next active player index
-    const nextIdx = (from: number): number => {
-      const n = players.length;
-      for (let off = 1; off <= n; off++) {
-        const idx = (from + off) % n;
-        if (players[idx].chips > 0 && players[idx].isActive) return idx;
-      }
-      return from; // fallback
-    };
-    // Rotate dealer to next active player
-    this.gameState.dealerPosition = nextIdx(this.gameState.dealerPosition === undefined ? -1 : this.gameState.dealerPosition);
-    // Assign blinds (heads-up or multi-hand)
-    if (activeCount === 2) {
-      this.gameState.smallBlindPosition = this.gameState.dealerPosition;
-      this.gameState.bigBlindPosition = nextIdx(this.gameState.dealerPosition);
-    } else {
-      this.gameState.smallBlindPosition = nextIdx(this.gameState.dealerPosition);
-      this.gameState.bigBlindPosition = nextIdx(this.gameState.smallBlindPosition);
-    }
-    this.addLog('--- New Hand ---');
-    // Reset state
-    this.gameState.pot = 0;
-    this.gameState.sidePots = [];
-    this.gameState.currentBet = 0;
-    this.gameState.stage = GameStage.PreFlop;
-    this.gameState.communityCards = [];
-    this.gameState.bettingActions = 0;
-    players.forEach(p => {
-      p.holeCards = [];
-      p.isFolded = false;
-      p.isAllIn = false;
-      p.currentBet = 0;
-      p.totalBetInRound = 0;
-    });
-    // New deck, deal
-    this.gameState.deck = this.createDeck();
-    this.dealHoleCards();
-    // --- Manually post blinds (do NOT trigger betting flow) ---
-    const postBlind = (idx: number, amount: number) => {
-      const p = players[idx];
-      const stake = Math.min(amount, p.chips);
-      p.chips -= stake;
-      p.currentBet += stake;
-      p.totalBetInRound += stake;
-      this.gameState.pot += stake;
-      if (p.chips === 0) p.isAllIn = true;
-    };
-    postBlind(this.gameState.smallBlindPosition, this.gameState.smallBlind);
-    postBlind(this.gameState.bigBlindPosition, this.gameState.bigBlind);
-    // Set up first action parameters
-    this.gameState.currentBet = players[this.gameState.bigBlindPosition].currentBet;
-    // Action starts with player left of big blind (UTG). In heads-up, that is the small blind / dealer.
-    this.gameState.currentPlayerIndex = nextIdx(this.gameState.bigBlindPosition);
-    // Big blind will be last to act in the opening round
-    this.gameState.lastToActIndex = this.gameState.bigBlindPosition;
-    this.gameState.lastRaiseAmount = this.gameState.bigBlind;
-  }
-*/
+
   // -------- Existing helper methods below --------
   private initializeGame(): GameState {
     return {

@@ -10,10 +10,10 @@ Fair, real‑time Texas Hold’em on the Monad blockchain.
 - Every shuffle is requested on the blockchain and returned as a verifiable result.
 - No secret servers. No hidden code. Anyone can audit the deal later.
 
-## How a hand works (in plain English)
+## How a hand works
 1. The host clicks “Start Game.”
-2. The game asks the blockchain for a shuffle (small network fee).
-3. You’ll see a wallet pop‑up to approve. Tap “Approve.”
+2. The game uses the host wallet to request shuffle onchain 
+3. deck is generated from entripy
 4. A few seconds later, the deck arrives from Pyth Entropy.
 5. Cards are dealt. Play your hand like normal poker.
 6. Winners are recorded and the leaderboard updates.
@@ -24,7 +24,7 @@ Fair, real‑time Texas Hold’em on the Monad blockchain.
 - If that tab closes, another takes over—no downtime.
 
 ## Your wallet, made simple
-- Log in with Privy (email or wallet). If you don’t have a wallet, one is created for you.
+- Log in with Privy (email). If you don’t have a wallet, one is created for you.
 - The wallet lives in your browser—your keys stay with you.
 - Monad Games ID helps your identity and wallet work across other Monad games that support it.
 - You approve any on‑chain action with a familiar pop‑up.
@@ -36,19 +36,18 @@ Fair, real‑time Texas Hold’em on the Monad blockchain.
 
 ## Quick start
 - Open the app link.
-- Log in (email or wallet).
+- Log in (email).
 - Create or join a table with friends.
 - Host starts the first hand and approves the shuffle pop‑up.
 - Play poker.
 
 ## Costs
-- Runs on Monad Testnet right now (uses test tokens).
+- Runs on Monad Testnet right now (uses mon tokens).
 - Shuffles require a small network fee (covered by your testnet wallet balance).
 
 ## FAQ
 - “On‑chain”? The game’s key moments (like shuffles) are recorded on a public ledger.
 - “Randomness”? Pyth Entropy is a public randomness service—think: unbiased dice rolled in public.
-- “Wallet pop‑up”? You approve actions (like shuffling) so nothing happens without your permission.
 - “Leaderboard”? Wins and participation are tracked and can be viewed by anyone.
 
 ---
